@@ -36,21 +36,21 @@ class Header extends Component {
           title: 'TODO',
           icon: <Icon type="exception" />
         },
-        // {
-        //   path: '/gist',
-        //   title: 'Gist',
-        //   icon: <Octicon name="gist" mega />
-        // },
+        {
+          path: '/gist',
+          title: 'Gist',
+          icon: <Octicon name="gist" mega />
+        },
         {
           path: '/github',
           title: 'Github',
           icon: <Octicon name="mark-github" mega />
         },
-        // {
-        //   path: '/case',
-        //   title: '案例展示',
-        //   icon: <Icon type="book" />
-        // },
+        {
+          path: '/case',
+          title: '案例展示',
+          icon: <Icon type="book" />
+        },
         {
           path: '/about',
           title: '关于我',
