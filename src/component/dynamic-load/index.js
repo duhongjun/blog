@@ -1,6 +1,3 @@
-/**
- * Created by axetroy on 17-5-22.
- */
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Spin } from 'antd'

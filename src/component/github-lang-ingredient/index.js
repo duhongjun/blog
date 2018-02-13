@@ -1,6 +1,3 @@
-/**
- * Created by axetroy on 17-4-6.
- */
 import React, { Component } from 'react'
 import { Tooltip } from 'antd'
 import { lazyload } from 'react-lazyload'

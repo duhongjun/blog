@@ -1,6 +1,3 @@
-/**
- * Created by axetroy on 17-5-25.
- */
 const fs = require('fs-extra');
 const path = require('path');
 

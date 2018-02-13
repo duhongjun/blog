@@ -1,13 +1,9 @@
-/**
- * Created by axetroy on 17-4-6.
- */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Row, Col, Menu, Pagination, Spin, Tag } from 'antd'
 import { NavLink, withRouter } from 'react-router-dom'
 import moment from 'moment'
-import EditThisPage from 'src/shared/edit-this-page'
 import DocumentTitle from '../../component/document-title'
 import github from '../../lib/github'
 import CONFIG from '../../config.json'
@@ -94,7 +90,6 @@ class TodoList extends Component {
       <DocumentTitle title={['TODO List']}>
         <Spin spinning={false}>
           <div className="toolbar-container">
-            <EditThisPage sourcePage="pages/todos/index.js" />
             <div style={{ padding: '0 2.4rem' }}>
               <h2 style={{ textAlign: 'center' }}>待办事项</h2>
             </div>
@@ -114,9 +109,7 @@ class TodoList extends Component {
                     style={{
                       borderBottom: '1px solid #e6e6e6',
                       backgroundColor:
-                        (todo.labels || []).findIndex(label => label.name === this.state.currentLabel) >= 0
-                          ? '#E0E0E0'
-                          : null
+                        (todo.labels || []).findIndex(label => label.name === this.state.currentLabel) >= 0 ? '#E0E0E0' : null
                     }}
                     key={todo.number + '/' + i}
                   >

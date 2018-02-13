@@ -1,7 +1,3 @@
-/**
- * Created by axetroy on 17-6-12.
- */
-
 import axios from 'axios'
 
 export default function(query = '') {
@@ -14,10 +10,8 @@ export default function(query = '') {
         responseType: 'json',
         headers: {
           Accept: 'application/json;charset=utf-8',
-          Authorization: `bearer ${atob(
-            'ODE5ZWNhYTYyZDlkNWE5MjAzM2ZjMGQzYjEzOGUyMWM3ODQ1ODJlOA=='
-          )}`,
-        },
+          Authorization: `bearer ${atob('ODE5ZWNhYTYyZDlkNWE5MjAzM2ZjMGQzYjEzOGUyMWM3ODQ1ODJlOA==')}`
+        }
       }
     )
   }

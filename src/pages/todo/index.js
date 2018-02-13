@@ -1,13 +1,9 @@
-/**
- * Created by axetroy on 17-4-6.
- */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { Spin, Steps, Icon, Tooltip, Tag } from 'antd'
 import moment from 'moment'
-import EditThisPage from 'src/shared/edit-this-page'
 import DocumentTitle from '../../component/document-title'
 import github from '../../lib/github'
 import * as todoAction from '../../redux/todo'
@@ -56,15 +52,11 @@ class Todo extends Component {
       <DocumentTitle title={[todo.title, 'TODO']}>
         <Spin spinning={!Object.keys(todo).length}>
           <div className="toolbar-container">
-            <EditThisPage sourcePage="pages/todo/index.js" />
             {todo.title && (
               <h2 style={{ textAlign: 'center', margin: '1rem 0' }}>
                 {todo.title}
                 <Tooltip placement="topLeft" title="编辑此页">
-                  <a
-                    href={`https://github.com/${CONFIG.owner}/${CONFIG.todo_repo}/issues/${todo.number}`}
-                    target="_blank"
-                  >
+                  <a href={`https://github.com/${CONFIG.owner}/${CONFIG.todo_repo}/issues/${todo.number}`} target="_blank">
                     <Icon type="edit" />
                   </a>
                 </Tooltip>
@@ -88,9 +80,9 @@ class Todo extends Component {
                   todo.closed_at
                     ? (() => {
                         const diff = diffTime(new Date(todo.created_at))(new Date(todo.closed_at))
-                        return `耗时${diff.days ? diff.days + '天' : ''} ${
-                          diff.hours || diff.days ? diff.hours + '时' : ''
-                        }${diff.minutes || diff.hours ? diff.minutes + '分' : ''}${diff.seconds}秒`
+                        return `耗时${diff.days ? diff.days + '天' : ''} ${diff.hours || diff.days ? diff.hours + '时' : ''}${
+                          diff.minutes || diff.hours ? diff.minutes + '分' : ''
+                        }${diff.seconds}秒`
                       })()
                     : '进行中...'
                 }

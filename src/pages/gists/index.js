@@ -1,6 +1,3 @@
-/**
- * Created by axetroy on 17-4-6.
- */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -12,7 +9,6 @@ import github from '../../lib/github'
 import graphql from '../../lib/graphql'
 import * as gistsAction from '../../redux/gists'
 import CONFIG from 'src/config.json'
-import EditThisPage from 'src/shared/edit-this-page'
 
 const { owner } = CONFIG
 
@@ -77,7 +73,6 @@ query{
     return (
       <DocumentTitle title={['Gist List']}>
         <div className="toolbar-container">
-          <EditThisPage sourcePage="pages/gists/index.js" />
           <div style={{ padding: '0 2.4rem' }}>
             <h2 style={{ textAlign: 'center' }}>代码片段</h2>
           </div>

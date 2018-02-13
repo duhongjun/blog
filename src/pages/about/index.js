@@ -1,6 +1,3 @@
-/**
- * Created by axetroy on 17-4-6.
- */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -12,7 +9,6 @@ import github from '../../lib/github'
 import * as aboutAction from '../../redux/about'
 
 import DocumentTitle from '../../component/document-title'
-import ViewSourceCode from '../../component/view-source-code'
 
 class About extends Component {
   componentDidMount() {
@@ -23,15 +19,12 @@ class About extends Component {
   async getAbout(owner, repo) {
     let html = ''
     try {
-      const response = await github.get(
-        `/repos/${owner}/${repo}/contents/ABOUTME.md`,
-        {
-          headers: {
-            Accept: 'application/vnd.github.v3.html',
-          },
-          responseType: 'text',
-        }
-      )
+      const response = await github.get(`/repos/${owner}/${repo}/contents/ABOUTME.md`, {
+        headers: {
+          Accept: 'application/vnd.github.v3.html'
+        },
+        responseType: 'text'
+      })
       html = response.data
     } catch (err) {
       console.error(err)
@@ -51,36 +44,20 @@ class About extends Component {
           <div className="toolbar-container">
             <div className="edit-this-page">
               <Tooltip placement="topLeft" title="编辑此页" arrowPointAtCenter>
-                <a
-                  href={`https://github.com/${CONFIG.owner}/${
-                    CONFIG.repo
-                  }/edit/master/ABOUTME.md`}
-                  target="_blank">
+                <a href={`https://github.com/${CONFIG.owner}/${CONFIG.repo}/edit/master/ABOUTME.md`} target="_blank">
                   <Icon
                     type="edit"
                     style={{
-                      fontSize: '3rem',
+                      fontSize: '3rem'
                     }}
                   />
                 </a>
-              </Tooltip>
-              <Tooltip placement="topLeft" title="查看源码" arrowPointAtCenter>
-                <ViewSourceCode file="pages/about/index.js">
-                  <a href="javascript: void 0" target="_blank">
-                    <Icon
-                      type="code"
-                      style={{
-                        fontSize: '3rem',
-                      }}
-                    />
-                  </a>
-                </ViewSourceCode>
               </Tooltip>
             </div>
             <div
               className="markdown-body"
               dangerouslySetInnerHTML={{
-                __html: this.props.ABOUT_ME,
+                __html: this.props.ABOUT_ME
               }}
             />
           </div>
@@ -92,13 +69,13 @@ class About extends Component {
 export default connect(
   function mapStateToProps(state) {
     return {
-      ABOUT_ME: state.ABOUT_ME,
+      ABOUT_ME: state.ABOUT_ME
     }
   },
   function mapDispatchToProps(dispatch) {
     return bindActionCreators(
       {
-        storeAboutMe: aboutAction.store,
+        storeAboutMe: aboutAction.store
       },
       dispatch
     )

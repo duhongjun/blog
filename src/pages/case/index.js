@@ -1,6 +1,3 @@
-/**
- * Created by axetroy on 17-4-6.
- */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -12,7 +9,6 @@ import github from '../../lib/github'
 import CONFIG from 'src/config.json'
 import DocumentTitle from '../../component/document-title'
 import * as showCaseAction from '../../redux/showcases'
-import EditThisPage from 'src/shared/edit-this-page'
 
 const { owner } = CONFIG
 
@@ -115,14 +111,12 @@ class Case extends Component {
   }
 
   render() {
-    const noScreenshotImg =
-      'https://user-images.githubusercontent.com/9758711/35052184-ec164078-fbe1-11e7-9e04-68509ebc9a34.jpg'
+    const noScreenshotImg = 'https://user-images.githubusercontent.com/9758711/35052184-ec164078-fbe1-11e7-9e04-68509ebc9a34.jpg'
     const { photoIndex, isOpen, lightboxImages } = this.state
     return (
       <DocumentTitle title={['案例展示']}>
         <Spin spinning={false}>
           <div className="toolbar-container">
-            <EditThisPage sourcePage="pages/case/index.js" />
             <LazyLoad height={300} offset={100}>
               <div>
                 <h2 style={{ textAlign: 'center' }}>案例展示</h2>

@@ -1,6 +1,3 @@
-/**
- * Created by axetroy on 17-4-6.
- */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -13,7 +10,6 @@ import github from '../../lib/github'
 import CONFIG from '../../config.json'
 import * as repoAction from '../../redux/repos'
 import GithubColors from '../../lib/github-colors.json'
-import EditThisPage from 'src/shared/edit-this-page'
 
 import './index.css'
 
@@ -93,7 +89,6 @@ class Repos extends Component {
       <DocumentTitle title={['开源项目']}>
         <Spin spinning={!this.props.REPOS || !this.props.REPOS.length}>
           <div className={'toolbar-container'}>
-            <EditThisPage sourcePage="pages/repos/index.js" />
             <Row gutter={8}>
               {this.props.REPOS.map((repo, i) => {
                 return (

@@ -1,6 +1,3 @@
-/**
- * Created by axetroy on 17-4-6.
- */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -9,7 +6,6 @@ import { Link, withRouter } from 'react-router-dom'
 import moment from 'moment'
 import queryString from 'query-string'
 import LazyLoad from 'react-lazyload'
-import EditThisPage from 'src/shared/edit-this-page'
 import DocumentTitle from '../../component/document-title'
 import github from '../../lib/github'
 import { firstUpperCase } from '../../lib/utils'
@@ -100,7 +96,6 @@ class Posts extends Component {
       <DocumentTitle title={['博客文章']}>
         <Spin spinning={false}>
           <div className={'toolbar-container'}>
-            <EditThisPage sourcePage="pages/posts/index.js" />
             {this.props.POSTS.map((post, i) => {
               return (
                 <Card style={{ margin: '2rem 0' }} className="post-list" key={post.number + '/' + i}>

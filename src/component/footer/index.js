@@ -1,6 +1,3 @@
-/**
- * Created by axetroy on 17-4-6.
- */
 import React, { Component } from 'react'
 import { Row, Col } from 'antd'
 import Now from '@axetroy/react-now'
@@ -38,12 +35,6 @@ class Footer extends Component {
               )
             }}
           </Now>
-          <p>
-            Created by{' '}
-            <a target="_blank" href="https://github.com/duhongjun">
-              duhongjun
-            </a>
-          </p>
         </Col>
       </Row>
     )

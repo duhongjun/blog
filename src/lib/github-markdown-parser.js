@@ -1,7 +1,3 @@
-/**
- * Created by axetroy on 17-4-10.
- */
-
 import github from './github';
 
 export default (async function(owner, repo, raw, mode = 'markdown') {

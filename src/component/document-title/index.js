@@ -1,6 +1,3 @@
-/**
- * Created by axetroy on 17-4-6.
- */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import DocumentTitle from '@axetroy/react-document-title'

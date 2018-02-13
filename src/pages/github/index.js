@@ -1,6 +1,3 @@
-/**
- * Created by axetroy on 17-4-6.
- */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -10,7 +7,6 @@ import GithubFollowers from '../../component/github-followers'
 import GithubFollowing from '../../component/github-following'
 import GithubRepositories from '../../component/github-repo'
 import GithubOrgs from '../../component/github-orgs'
-import EditThisPage from 'src/shared/edit-this-page'
 import DocumentTitle from '../../component/document-title'
 import './index.css'
 import CONFIG from '../../config.json'
@@ -27,7 +23,6 @@ class Github extends Component {
     return (
       <DocumentTitle title={['Github']}>
         <div className="toolbar-container">
-          <EditThisPage sourcePage="pages/github/index.js" />
           <h2 className="github-title">活跃度</h2>
           <div
             style={{

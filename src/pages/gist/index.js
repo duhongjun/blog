@@ -1,7 +1,3 @@
-// @flow
-/**
- * Created by axetroy on 17-4-6.
- */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -14,7 +10,6 @@ import DocumentTitle from '../../component/document-title'
 import Comments from '../../component/comments'
 import github from '../../lib/github'
 import * as gistAction from '../../redux/gist'
-import EditThisPage from '../../shared/edit-this-page'
 
 function values(obj) {
   let result = []
@@ -49,9 +44,9 @@ class Gist extends Component {
     try {
       const { data } = await github.get(`/gists/${id}`, {
         headers: {
-          Accept: 'application/vnd.github.v3.html',
+          Accept: 'application/vnd.github.v3.html'
         },
-        responseType: 'text',
+        responseType: 'text'
       })
       gist = data
 
@@ -62,7 +57,7 @@ class Gist extends Component {
             '/markdown',
             {
               text: '```' + file.language + '\n' + file.content + '\n```',
-              mode: 'markdown',
+              mode: 'markdown'
             },
             { responseType: 'text' }
           )
@@ -84,24 +79,17 @@ class Gist extends Component {
       <DocumentTitle title={[gist.description, 'Gist']}>
         <Spin spinning={!Object.keys(gist).length}>
           <div className="toolbar-container">
-            <EditThisPage sourcePage="pages/gist/index.js" />
             <h2 style={{ textAlign: 'center', margin: '1rem 0' }}>
               {gist.description}
               <Tooltip placement="topLeft" title="编辑此页">
-                <a
-                  href={`https://gist.github.com/${
-                    gist.owner ? gist.owner.login : ''
-                  }/${gist.id}/edit`}
-                  target="_blank">
+                <a href={`https://gist.github.com/${gist.owner ? gist.owner.login : ''}/${gist.id}/edit`} target="_blank">
                   <Icon type="edit" />
                 </a>
               </Tooltip>
             </h2>
             {(values(gist.files) || []).map(file => {
               return (
-                <div
-                  key={file.filename}
-                  style={{ border: '0.1rem solid #ececec', margin: '2rem 0' }}>
+                <div key={file.filename} style={{ border: '0.1rem solid #ececec', margin: '2rem 0' }}>
                   <h3 style={{ backgroundColor: '#eaeaea', padding: '0.5rem' }}>
                     <span>
                       <Icon type="file" />
@@ -109,12 +97,10 @@ class Gist extends Component {
                     </span>
                     <span
                       style={{
-                        margin: '0 0.5rem',
-                      }}>
-                      <Download
-                        file={file.filename}
-                        content={file.content}
-                        style={{ display: 'inline' }}>
+                        margin: '0 0.5rem'
+                      }}
+                    >
+                      <Download file={file.filename} content={file.content} style={{ display: 'inline' }}>
                         <a href="javascript:">
                           <Icon type="download" />
                           {prettyBytes(file.size || 0)}
@@ -126,7 +112,8 @@ class Gist extends Component {
                         style={{ cursor: 'pointer' }}
                         value={file.content}
                         onSuccess={() => message.success('Copy Success!')}
-                        onError={() => message.error('Copy Fail!')}>
+                        onError={() => message.error('Copy Fail!')}
+                      >
                         <Icon type="copy" />Copy
                       </ReactClipboard>
                     </span>
@@ -134,10 +121,10 @@ class Gist extends Component {
                   <div
                     className="markdown-body"
                     style={{
-                      fontSize: '1.6rem',
+                      fontSize: '1.6rem'
                     }}
                     dangerouslySetInnerHTML={{
-                      __html: file.html,
+                      __html: file.html
                     }}
                   />
                 </div>
@@ -156,13 +143,13 @@ class Gist extends Component {
 export default connect(
   function mapStateToProps(state) {
     return {
-      GIST: state.GIST,
+      GIST: state.GIST
     }
   },
   function mapDispatchToProps(dispatch) {
     return bindActionCreators(
       {
-        setGist: gistAction.set,
+        setGist: gistAction.set
       },
       dispatch
     )

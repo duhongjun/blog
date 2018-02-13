@@ -1,7 +1,3 @@
-/**
- * Created by axetroy on 2017/4/19.
- */
-
 import { createAction, handleActions } from 'redux-actions';
 
 export const PUSH = 'STORE_REPO_LANG';
