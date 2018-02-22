@@ -9,13 +9,10 @@ import ClickMaterial from './component/click-material'
 import DynamicLoad from './component/dynamic-load'
 
 import store from './redux/index'
-import RouterListener from './lib/router-listener'
 
 import './App.css'
 
 import CONFIG from './config.json'
-
-const ClickMaterialWithStatRouterListener = RouterListener(ClickMaterial)
 
 const GithubSvg = props => (
   <svg
@@ -46,17 +43,7 @@ const GithubSvg = props => (
   </svg>
 )
 
-const { ga } = window
 class App extends Component {
-  handleRouterChange = (location, action) => {
-    // location is an object like window.location
-    ga &&
-      ga('set', {
-        page: location.pathname,
-        title: document.title
-      })
-  }
-
   render() {
     // 适应不同大小屏幕
     const layoutPorps = {
@@ -68,42 +55,42 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <ClickMaterialWithStatRouterListener onRouterChange={this.handleRouterChange}>
-            <Row>
-              <Col {...layoutPorps}>
-                <Header />
-                <a target="_blank" href={`https://github.com/${CONFIG.owner}/${CONFIG.repo}`}>
-                  <GithubSvg />
-                </a>
-              </Col>
-              <Col {...layoutPorps}>
-                <Card
-                  style={{
-                    marginTop: '2rem'
-                  }}
-                >
-                  <Switch>
-                    <Route exact path="/" render={() => <DynamicLoad promise={import('./pages/home')} />} />
-                    <Route path="/github" render={() => <DynamicLoad promise={import('./pages/github')} />} />
-                    <Route path="/about" render={() => <DynamicLoad promise={import('./pages/about')} />} />
-                    <Route path="/posts" render={() => <DynamicLoad promise={import('./pages/posts')} />} />
-                    <Route path="/post/:number" render={() => <DynamicLoad promise={import('./pages/post')} />} />
-                    <Route path="/repo/:repo" render={() => <DynamicLoad promise={import('./pages/repo')} />} />
-                    <Route path="/repo" render={() => <DynamicLoad promise={import('./pages/repos')} />} />
-                    <Route path="/todo/:number" render={() => <DynamicLoad promise={import('./pages/todo')} />} />
-                    <Route path="/todo" render={() => <DynamicLoad promise={import('./pages/todos')} />} />
-                    <Route path="/gist/:id" render={() => <DynamicLoad promise={import('./pages/gist')} />} />
-                    <Route path="/gist" render={() => <DynamicLoad promise={import('./pages/gists')} />} />
-                    <Route path="/search" render={() => <DynamicLoad promise={import('./pages/search')} />} />
-                    <Route path="/case" render={() => <DynamicLoad promise={import('./pages/case')} />} />
-                  </Switch>
-                </Card>
-              </Col>
-              <Col {...layoutPorps}>
-                <Footer />
-              </Col>
-            </Row>
-          </ClickMaterialWithStatRouterListener>
+          <Row>
+            <Col {...layoutPorps}>
+              <Header />
+              <a target="_blank" href={`https://github.com/${CONFIG.owner}/${CONFIG.repo}`}>
+                <GithubSvg />
+              </a>
+            </Col>
+            <Col {...layoutPorps}>
+              <Card
+                style={{
+                  marginTop: '2rem'
+                }}
+                id="content"
+              >
+                <Switch>
+                  <Route exact path="/" render={() => <DynamicLoad promise={import('./pages/home')} />} />
+                  <Route path="/github" render={() => <DynamicLoad promise={import('./pages/github')} />} />
+                  <Route path="/about" render={() => <DynamicLoad promise={import('./pages/about')} />} />
+                  <Route path="/posts" render={() => <DynamicLoad promise={import('./pages/posts')} />} />
+                  <Route path="/post/:number" render={() => <DynamicLoad promise={import('./pages/post')} />} />
+                  <Route path="/repo/:repo" render={() => <DynamicLoad promise={import('./pages/repo')} />} />
+                  <Route path="/repo" render={() => <DynamicLoad promise={import('./pages/repos')} />} />
+                  <Route path="/todo/:number" render={() => <DynamicLoad promise={import('./pages/todo')} />} />
+                  <Route path="/todo" render={() => <DynamicLoad promise={import('./pages/todos')} />} />
+                  <Route path="/gist/:id" render={() => <DynamicLoad promise={import('./pages/gist')} />} />
+                  <Route path="/gist" render={() => <DynamicLoad promise={import('./pages/gists')} />} />
+                  <Route path="/search" render={() => <DynamicLoad promise={import('./pages/search')} />} />
+                  <Route path="/case" render={() => <DynamicLoad promise={import('./pages/case')} />} />
+                </Switch>
+              </Card>
+            </Col>
+            <Col {...layoutPorps}>
+              <Footer />
+            </Col>
+            <ClickMaterial />
+          </Row>
         </BrowserRouter>
       </Provider>
     )

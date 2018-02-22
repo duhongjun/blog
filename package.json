@@ -107,7 +107,7 @@
     "start": "node scripts/now.js && cross-env PORT=10086 node scripts/start.js",
     "build": "node scripts/now.js && node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "deploy": "node scripts/rm-map.js && gh-pages --repo https://github.com/duhongjun/duhongjun.github.io.git --branch master -d build -m \"deploy $(date)\"",
+    "deploy": "npm run build && node scripts/rm-map.js && gh-pages --repo https://github.com/duhongjun/duhongjun.github.io.git --branch master -d build -m \"deploy $(date)\"",
     "generate": "./node_modules/.bin/all-contributors generate",
     "flow": "flow",
     "format": "npm run format:js && npm run format:css && npm run format:json",
