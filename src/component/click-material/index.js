@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import anime from 'animejs'
-import { ClickColors } from '../../common/constant'
 import './index.css'
+import debounce from 'lodash.debounce'
+
+export const clickColors = ['#FF1461', '#18FF92', '#5A87FF', '#FBF38C']
 
 const numberOfParticules = 40
 const tap = 'ontouchstart' in window || navigator.msMaxTouchPoints ? 'touchstart' : 'mousedown'
 
 class ClickComponents extends Component {
-  setCanvasSize = (height = document.body.scrollHeight) => {
-    this.canvasEl.width = document.body.scrollWidth * 2
-    this.canvasEl.height = height * 2
-    this.canvasEl.style.width = '100%'
+  setCanvasSize = () => {
+    const container = this.refs.container
+    const height = container.clientHeight
+    const width = container.clientWidth
+    this.canvasEl.width = width
+    this.canvasEl.height = height
+    this.canvasEl.style.width = width + 'px'
     this.canvasEl.style.height = height + 'px'
-    this.canvasEl.getContext('2d').scale(2, 2)
+    this.canvasEl.getContext('2d')
   }
 
   updateCoords = e => {
@@ -34,7 +39,7 @@ class ClickComponents extends Component {
     const p = {}
     p.x = x
     p.y = y
-    p.color = ClickColors[anime.random(0, ClickColors.length - 1)]
+    p.color = clickColors[anime.random(0, clickColors.length - 1)]
     p.radius = anime.random(16, 32)
     p.endPos = this.setParticuleDirection(p)
     p.draw = () => {
@@ -111,13 +116,16 @@ class ClickComponents extends Component {
 
   render() {
     return (
-      <canvas
-        className="fireworks"
-        height="100%"
-        ref={el => {
-          this.canvasEl = el
-        }}
-      />
+      <div ref="container" className="click-material">
+        {this.props.children}
+        <canvas
+          className="fireworks"
+          height="100%"
+          ref={el => {
+            this.canvasEl = el
+          }}
+        />
+      </div>
     )
   }
 
@@ -136,10 +144,6 @@ class ClickComponents extends Component {
     document.addEventListener(
       tap,
       e => {
-        const scrollHeight = document.body.scrollHeight
-        if (scrollHeight !== this.scrollHeight) {
-          this.setCanvasSize(scrollHeight)
-        }
         render.play()
         this.updateCoords(e)
         this.animateParticules(this.pointerX, this.pointerY)
@@ -147,7 +151,9 @@ class ClickComponents extends Component {
       false
     )
 
-    window.addEventListener('resize', this.setCanvasSize, false)
+    window.addEventListener('resize', debounce(this.setCanvasSize.bind(this), 300))
+
+    window.addEventListener('scroll', debounce(this.setCanvasSize.bind(this), 300))
   }
 }
 
