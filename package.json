@@ -2,7 +2,7 @@
   "name": "blog",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://duhongjun.github.io",
+  "homepage": "http://duhongjun.github.io/blogsite",
   "keywords": [
     "axetroy",
     "blog",
@@ -107,7 +107,7 @@
     "start": "node scripts/now.js && cross-env PORT=10086 node scripts/start.js",
     "build": "node scripts/now.js && node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "deploy": "npm run build && node scripts/rm-map.js && gh-pages --repo https://github.com/duhongjun/duhongjun.github.io.git --branch master -d build -m \"deploy $(date)\"",
+    "deploy": "npm run build && node scripts/rm-map.js && gh-pages --repo https://github.com/duhongjun/blogsite.git --branch master -d build -m \"deploy $(date)\"",
     "generate": "./node_modules/.bin/all-contributors generate",
     "flow": "flow",
     "format": "npm run format:js && npm run format:css && npm run format:json",

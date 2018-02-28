@@ -53,7 +53,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename="/blogsite">
           <ClickMaterial>
             <Row>
               <Col {...layoutPorps}>
