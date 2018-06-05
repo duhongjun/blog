@@ -1,3 +1,5 @@
+// 首页动画Logo
+
 import React, { Component } from 'react'
 import Anime from 'animejs'
 import './index.less'

@@ -3,6 +3,7 @@ const fs = require('fs')
 const { getLoader } = require('react-app-rewired')
 const tsImportPluginFactory = require('ts-import-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const webpack = require('webpack')
 
 function resolve(dir) {
   return path.join(__dirname, '.', dir)
@@ -15,6 +16,16 @@ module.exports = function override(config, env) {
   config.resolve.alias = Object.assign({}, config.resolve.alias, {
     src: resolve('./src')
   })
+  config.plugins.push(
+    new webpack.ContextReplacementPlugin(/^\.\/locale$/, context => {
+      if (!/\/moment/.test(context.context)) {
+        return
+      }
+      Object.assign(context, {
+        regExp: /^\.(zh-cn)/
+      })
+    })
+  )
 
   if (process.env.REACT_APP_ENV === 'development') {
     config.module.rules.push({
@@ -47,7 +58,7 @@ module.exports = function override(config, env) {
     config.module.rules,
     rule => rule.loader && typeof rule.loader === 'string' && rule.loader.includes('ts-loader')
   )
-  
+
   tsLoader.options = {
     getCustomTransformers: () => ({
       before: [

@@ -22,24 +22,10 @@ export default class Layout extends Component {
           </a>
         </Col>
         <Col {...layoutPrpps}>
-          <Card
-            style={{
-              marginTop: '2rem'
-            }}
-            id="content"
-          >
-            {this.props.children}
-          </Card>
+          <Card id="content">{this.props.children}</Card>
         </Col>
         <Col {...layoutPrpps}>
-          <Row
-            className="text-center"
-            style={{
-              marginTop: '2rem',
-              padding: '2rem 0',
-              backgroundColor: '#fff'
-            }}
-          >
+          <Row className="layout__footer">
             <Col span={24}>
               <p>Copyright © 2018</p>
             </Col>

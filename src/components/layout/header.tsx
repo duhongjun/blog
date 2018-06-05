@@ -11,12 +11,10 @@ interface INavItem {
   title: string
   icon: React.ReactElement<any>
 }
-
 interface IProps {
   location: any
   history: any
 }
-
 interface IState {
   nav: INavItem[]
 }
@@ -68,115 +66,47 @@ class Header extends Component<IProps, IState> {
 
   handleClickSearch = () => {
     this.props.history.push({
-      ...this.props.location,
       pathname: '/search'
     })
   }
 
-  render() {
+  calcClassName = (nav: INavItem) => {
+    const navPath = nav.path
     const pathname = this.props.location.pathname
-    const navClassName = 'ant-menu-item-selected'
+    const isMatchRoute = matchPath(pathname, {
+      path: navPath
+    })
+
+    if (pathname === '/') {
+      return pathname === navPath ? 'ant-menu-item-selected' : ''
+    } else {
+      return isMatchRoute && navPath !== '/' ? 'ant-menu-item-selected' : ''
+    }
+  }
+
+  render() {
     return (
-      <div
-        id="header"
-        style={{
-          position: 'relative'
-        }}
-      >
-        <div
-          className="blur"
-          style={{
-            width: '100%',
-            height: '20rem',
-            backgroundImage:
-              'url(https://user-images.githubusercontent.com/9758711/35051962-65350bb6-fbe1-11e7-91e3-c79da2cb5e73.jpg)',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'inherit',
-            backgroundPosition: 'center',
-            position: 'relative'
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            textAlign: 'center',
-            color: '#fff',
-            width: '100%',
-            height: '100%'
-          }}
-        >
-          <div
-            style={{
-              marginTop: '3rem'
-            }}
-          >
-            <img
-              style={{
-                width: '10rem',
-                borderRadius: '50%'
-              }}
-              className="jumpClass"
-              src={avatar}
-              alt=""
-            />
-            <h2>
-              <span style={{ color: '#fff' }}>{info.name}</span>
-            </h2>
+      <div id="header">
+        <div className="header__bg" />
+        <div className="header__container">
+          <div>
+            <img className="header__avatar" src={avatar} alt="" />
+            <h2>{info.name}</h2>
             <q>{info.motto}</q>
           </div>
-          <div
-            style={{
-              float: 'right',
-              marginRight: '2rem'
-            }}
-          >
-            <Icon
-              type="search"
-              style={{
-                fontSize: '3rem',
-                color: '#fff',
-                cursor: 'pointer',
-                border: '1px solid #64ceaa',
-                borderRadius: '50%',
-                backgroundColor: '#64ceaa',
-                padding: '0.5rem'
-              }}
-              onClick={this.handleClickSearch}
-            />
+          <div className="hicon__container">
+            <Icon type="search" onClick={this.handleClickSearch} />
           </div>
         </div>
         <Menu mode="horizontal">
-          {this.state.nav.map(nav => {
-            return (
-              <Menu.Item
-                key={nav.path}
-                className={(() => {
-                  const navPath = nav.path
-                  const isMatchRoute = matchPath(pathname, {
-                    path: navPath
-                  })
-                  if (pathname === '/') {
-                    return pathname === navPath ? navClassName : ''
-                  } else {
-                    return isMatchRoute && navPath !== '/' ? navClassName : ''
-                  }
-                })()}
-              >
-                <NavLink
-                  to={nav.path}
-                  style={{
-                    fontSize: '1.4rem'
-                  }}
-                >
-                  {nav.icon ? nav.icon : ''}
-                  {nav.title}
-                </NavLink>
-              </Menu.Item>
-            )
-          })}
+          {this.state.nav.map(nav => (
+            <Menu.Item key={nav.path} className={this.calcClassName(nav)}>
+              <NavLink to={nav.path}>
+                {nav.icon}
+                {nav.title}
+              </NavLink>
+            </Menu.Item>
+          ))}
         </Menu>
       </div>
     )
