@@ -1,24 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { init } from '@rematch/core'
-import { Provider } from 'react-redux'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
+// import { Provider } from 'react-redux'
 import registerServiceWorker from './registerServiceWorker'
 import 'src/assets/css/index.css'
 import RouteConfig from './router'
-import * as models from './models'
-
-dayjs.extend(relativeTime)
-
-const store = init({
-  models
-})
+// import { store } from './store'
 
 const App = () => (
-  <Provider store={store}>
+  // <Provider store={store}>
     <RouteConfig />
-  </Provider>
+  // </Provider>
 )
 
 ReactDOM.render(<App />, document.getElementById('root') as HTMLElement)

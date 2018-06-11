@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Layout from 'src/components/layout'
 
 import Home from '../view/home'
+import Posts from '../view/posts'
 
 const RouterConfig = () => {
   return (
@@ -10,6 +11,7 @@ const RouterConfig = () => {
       <Layout>
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/posts" exact component={Posts} />
           {/* <Route exact path="/" render={() => <DynamicLoad promise={import('./pages/home')} />} /> */}
           {/* <Route path="/posts" render={() => <DynamicLoad promise={import('./pages/posts')} />} /> */}
           {/* <Route path="/github" render={() => <DynamicLoad promise={import('./pages/github')} />} />
