@@ -31,12 +31,12 @@ class Header extends Component<IProps, IState> {
           icon: <Octicon name="book" mega />
         },
         {
-          path: '/repo',
+          path: '/repos',
           title: '开源项目',
           icon: <Octicon name="repo" mega />
         },
         {
-          path: '/todo',
+          path: '/todos',
           title: 'TODO',
           icon: <Icon type="exception" />
         },

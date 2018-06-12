@@ -19,6 +19,9 @@ body {
   background-repeat: no-repeat;
 }
 
+ul, li {
+  list-style: none;
+}
 #root {
   min-height: 100%;
   overflow: hidden;

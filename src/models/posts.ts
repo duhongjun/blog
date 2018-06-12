@@ -44,7 +44,7 @@ const Posts = createModel({
     }
   },
   effects: {
-    async getPosts(payload: IGetPosts, rootState: IPostState) {
+    async getPosts(payload: IGetPosts) {
       const { page, perPage } = payload.meta
 
       try {
