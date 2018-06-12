@@ -1,0 +1,38 @@
+.todos-label {
+  padding: 0 2.4rem;
+  h2 {
+    text-align: center;
+  }
+}
+.todos-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 0;
+
+  .todos-list {
+    padding: 10px;
+    border-bottom: 1px solid #e6e6e6;
+    &:hover {
+      background-color: #fafafa !important;
+    }
+    a {
+      white-space: nowrap;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      color: #000;
+    }
+    .todos-moment {
+      margin-right: 0.5rem;
+    }
+    .todos-tag {
+      float: right;
+    }
+  }
+  .todos-pagination {
+    text-align: center;
+    .ant-col-24 {
+      transition: all 1s;
+    }
+  }
+}

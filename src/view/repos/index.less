@@ -1,0 +1,43 @@
+.repos-list {
+  height: 24rem;
+  margin: 2rem 0;
+  &:hover {
+    background-color: #fafafa;
+  }
+  a {
+    color: #616161;
+    word-break: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .mega-octicon {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+  .octicon-repo {
+    margin-right: 0.5rem;
+    font-size: 2rem;
+  }
+  .repos-desc {
+    color: #9e9e9e;
+  }
+  .repos-info {
+    position: absolute;
+    bottom: 1rem;
+  }
+  .repos-language-color {
+    background-color: grey;
+    position: relative;
+    top: 0.1rem;
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+  }
+  .repos-pagination {
+    text-align: center;
+    .ant-col-24 {
+      transition: all 1s;
+    }
+  }
+}
