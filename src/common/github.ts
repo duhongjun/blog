@@ -1,5 +1,4 @@
 import axios from 'axios'
-import axiosRetry from 'axios-retry'
 import CONFIG from 'src/config/config'
 
 const instance = axios.create({
@@ -13,7 +12,5 @@ const instance = axios.create({
   responseType: 'json',
   headers: { Accept: 'application/json;charset=utf-8' }
 })
-
-axiosRetry(instance, { retries: 3 })
 
 export default instance

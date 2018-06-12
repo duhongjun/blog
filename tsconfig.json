@@ -14,8 +14,8 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noImplicitAny": false,
-    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictNullChecks": false, // 关闭, 否则rematch报错 
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "paths": {
