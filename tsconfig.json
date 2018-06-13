@@ -18,6 +18,7 @@
     "strictNullChecks": false, // 关闭, 否则rematch报错 
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
+    "experimentalDecorators": true,
     "paths": {
       // 类似于webpack alias
       "src": ["src"]

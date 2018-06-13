@@ -1,3 +1,7 @@
 export { default as posts } from './posts'
+export { default as post } from './post'
 export { default as repos } from './repos'
 export { default as todos } from './todos'
+export { default as gists } from './gists'
+export { default as cases } from './cases'
+export { default as about } from './about'

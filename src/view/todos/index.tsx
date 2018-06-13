@@ -22,7 +22,7 @@ class TodoList extends Component<ITodosProps, any> {
       ...this.props.location,
       search: queryString.stringify(Object.assign(oldQuery, { page }))
     })
-    this.props.getAllTodos({ meta: { ...this.props.meta, page } })
+    this.props.getTodos({ meta: { ...this.props.meta, page } })
   }
 
   render() {
@@ -80,7 +80,7 @@ class TodoList extends Component<ITodosProps, any> {
       page: +page || this.props.meta.page,
       perPage: +per_page || this.props.meta.perPage
     }
-    this.props.getAllTodos({ meta })
+    this.props.getTodos({ meta })
   }
 }
 
@@ -90,7 +90,7 @@ const mapState = (state: RematchRootState<models>) => ({
 })
 
 const mapDispatch = (dispatch: RematchDispatch<models>) => ({
-  getAllTodos: (params: any) => dispatch.todos.getAllTodos(params)
+  getTodos: (params: any) => dispatch.todos.getTodos(params)
 })
 
 export default connect(

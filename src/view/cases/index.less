@@ -1,0 +1,32 @@
+.cases-container {
+  h2 {
+    text-align: center;
+  }
+  .cases-item {
+    margin: 1rem 0;
+  }
+  .ant-card-body {
+    & > div {
+      position: relative;
+      overflow: hidden;
+      min-height: 30rem;
+    }
+    .cases-item-image {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: interit;
+      background-position: center center;
+      vertical-align: middle;
+      width: 100%;
+      height: 30rem;
+    }
+    .cases-item-desc {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: #fafafa;
+      padding: 1rem;
+      width: 100%;
+    }
+  }
+}

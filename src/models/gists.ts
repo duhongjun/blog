@@ -1,63 +1,57 @@
 /**
- * 存储repo列表
+ * 存储gists列表
  */
 import { dispatch, createModel } from '@rematch/core'
 import github from 'src/common/github'
 import CONFIG from 'src/config/config'
 
-interface ITodoState {
-  todos: any[]
-  labels: any[]
+interface IGistState {
+  gists: any[]
   meta: {
     page: number
     perPage: number
     total: number
   }
 }
-
-interface ISetTodos {
-  meta: {
-    page: number
-    perPage: number
-    total: number
-  }
-  todos: any[]
-}
-
-interface IGetTodos {
+interface IGetGists {
   page: number
   perPage: number
   meta: any
 }
+interface ISetGists {
+  meta: {
+    page: number
+    perPage: number
+    total: number
+  }
+  gists: any[]
+}
 
-const Todos = createModel({
+const Gists = createModel({
   state: {
     meta: {
       page: 1,
       perPage: 10,
       total: 0
     },
-    todos: [],
-    labels: []
+    gists: []
   },
   reducers: {
-    setTodos: (state: ITodoState, payload: ISetTodos) => {
-      state.todos = payload.todos
+    setGists: (state: IGistState, payload: ISetGists) => {
+      state.gists = payload.gists
       state.meta = payload.meta
       return state
-    },
-    setLabel: (state: ITodoState, payload: any[]) => {
-      return (state.labels = payload)
     }
   },
   effects: {
-    async getTodos(payload: IGetTodos) {
+    async getGists(payload: IGetGists) {
       const { page, perPage } = payload.meta
+
       try {
-        const res = await github.get(`/repos/${CONFIG.owner}/${CONFIG.todo_repo}/issues`, {
-          params: { creator: CONFIG.owner, page, per_page: perPage, state: 'all' }
+        const res = await github.get(`/users/${CONFIG.owner}/gists`, {
+          params: { page, per_page: perPage }
         })
-        const todos = res.data
+        const gists = res.data
         const link = res.headers.link
         let newMeta = payload.meta
         if (link) {
@@ -68,16 +62,12 @@ const Todos = createModel({
             ...{ page, per_page: perPage, total: lastPage * perPage }
           }
         }
-        dispatch.todos.setTodos({ todos, meta: newMeta })
+        dispatch.gists.setGists({ gists, meta: newMeta })
       } catch (err) {
         console.error(err)
       }
-    },
-    async getLabels() {
-      const { data } = await github.get(`/repos/${CONFIG.owner}/${CONFIG.todo_repo}/labels`)
-      dispatch.todos.setLabel(data)
     }
   }
 })
 
-export default Todos
+export default Gists

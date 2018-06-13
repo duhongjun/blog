@@ -41,17 +41,12 @@ class Header extends Component<IProps, IState> {
           icon: <Icon type="exception" />
         },
         {
-          path: '/gist',
+          path: '/gists',
           title: 'Gist',
           icon: <Octicon name="gist" mega />
         },
         {
-          path: '/github',
-          title: 'Github',
-          icon: <Octicon name="mark-github" mega />
-        },
-        {
-          path: '/case',
+          path: '/cases',
           title: '案例展示',
           icon: <Icon type="book" />
         },

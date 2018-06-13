@@ -38,7 +38,7 @@ class Posts extends Component<IPostsProps, any> {
             {posts.map((post: any, i: number) => (
               <Card className="posts-list" key={post.number + '/' + i}>
                 <h3 className="posts-title">
-                  <Link to={`/post/${post.number}`}>{post.title}</Link>
+                  <Link to={`/posts/${post.number}`}>{post.title}</Link>
                 </h3>
                 <div>
                   {(post.labels || []).map((label: any) => (
