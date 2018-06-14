@@ -34,7 +34,7 @@
   "scripts": {
     "start": "REACT_APP_ENV=development react-app-rewired start --scripts-version react-scripts-ts",
     "build": "REACT_APP_ENV=production react-app-rewired build --scripts-version react-scripts-ts",
-    "deploy": "npm run build && gh-pages -d build",
+    "deploy": "npm run build && gh-pages --repo https://github.com/duhongjun/blogsite.git --branch master -d build -m \"deploy $(date)\"",
     "test": "react-scripts-ts test --env=jsdom"
   },
   "devDependencies": {
