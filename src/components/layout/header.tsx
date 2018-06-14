@@ -59,12 +59,6 @@ class Header extends Component<IProps, IState> {
     }
   }
 
-  handleClickSearch = () => {
-    this.props.history.push({
-      pathname: '/search'
-    })
-  }
-
   calcClassName = (nav: INavItem) => {
     const navPath = nav.path
     const pathname = this.props.location.pathname
@@ -88,9 +82,6 @@ class Header extends Component<IProps, IState> {
             <img className="header__avatar" src={avatar} alt="" />
             <h2>{info.name}</h2>
             <q>{info.motto}</q>
-          </div>
-          <div className="hicon__container">
-            <Icon type="search" onClick={this.handleClickSearch} />
           </div>
         </div>
         <Menu mode="horizontal">

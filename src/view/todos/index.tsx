@@ -38,7 +38,7 @@ class TodoList extends Component<ITodosProps, any> {
             <ul className="todos-container">
               {todos.map((todo: any, i: number) => (
                 <li className="todos-list" key={todo.number + '/' + i}>
-                  <NavLink exact={true} to={`/todo/${todo.number}`}>
+                  <NavLink exact={true} to={`/todos/${todo.number}`}>
                     <Tag color={todo.state === 'open' ? 'blue' : 'grey'} className="hidden-xs">
                       {todo.state === 'open' ? <span>&nbsp;Open&nbsp;</span> : <span>Closed</span>}
                     </Tag>

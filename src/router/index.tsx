@@ -12,15 +12,14 @@ const RouterConfig = () => {
           <Route path="/" exact component={Home} />
           <Route path="/posts" exact component={DynamicLoad(() => import('../view/posts'))} />
           <Route path="/posts/:id" component={DynamicLoad(() => import('../view/posts/post'))} />
-          <Route path="/repos" component={DynamicLoad(() => import('../view/repos'))} />} />
-          <Route path="/todos" component={DynamicLoad(() => import('../view/todos'))} />} />
-          <Route path="/gists" component={DynamicLoad(() => import('../view/gists'))} />} />
+          <Route path="/repos" exact component={DynamicLoad(() => import('../view/repos'))} />} />
+          <Route path="/repos/:repo" component={DynamicLoad(() => import('../view/repos/repo'))} />} />
+          <Route path="/todos" exact component={DynamicLoad(() => import('../view/todos'))} />} />
+          <Route path="/todos/:id" component={DynamicLoad(() => import('../view/todos/todo'))} />} />
+          <Route path="/gists" exact component={DynamicLoad(() => import('../view/gists'))} />} />
+          <Route path="/gists/:id" component={DynamicLoad(() => import('../view/gists/gist'))} />} />
           <Route path="/cases" component={DynamicLoad(() => import('../view/cases'))} />} />
-          {/* <Route path="/post/:number" render={() => <DynamicLoad promise={import('./pages/post')} />} />
-          <Route path="/repo/:repo" render={() => <DynamicLoad promise={import('./pages/repo')} />} />
-          <Route path="/todo/:number" render={() => <DynamicLoad promise={import('./pages/todo')} />} />
-          <Route path="/gist/:id" render={() => <DynamicLoad promise={import('./pages/gist')} />} />
-          <Route path="/search" render={() => <DynamicLoad promise={import('./pages/search')} />} /> */}
+          {/* <Route path="/search" render={() => <DynamicLoad promise={import('./pages/search')} />} /> */}
         </Switch>
       </Layout>
     </Router>

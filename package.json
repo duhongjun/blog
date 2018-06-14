@@ -2,18 +2,24 @@
   "name": "ts-blog",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://duhongjun.github.io/blogsite",
   "dependencies": {
+    "@axetroy/react-clipboard": "1.0.0",
+    "@axetroy/react-download": "^1.1.1",
     "@rematch/core": "1.0.0-alpha.9",
     "@rematch/immer": "^1.0.2",
     "@rematch/loading": "^1.0.4",
     "animejs": "^2.2.0",
-    "antd": "3.6.1",
+    "antd": "3.6.2",
     "axios": "^0.18.0",
+    "clipboard": "^1.7.1",
     "fastclick": "^1.0.6",
+    "gh-pages": "^1.2.0",
     "github-markdown-css": "^2.10.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "normalize.css": "^8.0.0",
+    "proptypes": "^1.1.0",
     "qrcode.react": "^0.8.0",
     "query-string": "^6.1.0",
     "react": "^16.4.0",
@@ -28,6 +34,7 @@
   "scripts": {
     "start": "REACT_APP_ENV=development react-app-rewired start --scripts-version react-scripts-ts",
     "build": "REACT_APP_ENV=production react-app-rewired build --scripts-version react-scripts-ts",
+    "deploy": "npm run build && gh-pages -d build",
     "test": "react-scripts-ts test --env=jsdom"
   },
   "devDependencies": {

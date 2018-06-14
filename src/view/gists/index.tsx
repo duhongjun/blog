@@ -37,7 +37,7 @@ class Gists extends Component<IGistsProps, any> {
               {gists.map(gist => {
                 return (
                   <li key={gist.id}>
-                    <NavLink exact={true} to={`/gist/${gist.id}`}>
+                    <NavLink exact={true} to={`/gists/${gist.id}`}>
                       <Octicon name="gist" mega />
                       {gist.description}
                     </NavLink>

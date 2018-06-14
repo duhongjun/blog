@@ -37,7 +37,7 @@ class Repos extends Component<IReposProps, any> {
                 return (
                   <Col key={`${repo.owner.login}/${repo.name}/${i}`} lg={8} md={8} sm={12} xs={24}>
                     <Card className="repos-list">
-                      <Link to={`/repo/${repo.name}`}>
+                      <Link to={`/repos/${repo.name}`}>
                         <Octicon name={repo.fork ? 'repo-forked' : 'repo'} mega />
                         {repo.name}
                       </Link>
