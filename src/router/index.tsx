@@ -6,7 +6,7 @@ import Home from '../view/home'
 
 const RouterConfig = () => {
   return (
-    <Router>
+    <Router basename="/blogsite">
       <Layout>
         <Switch>
           <Route path="/" exact component={Home} />
@@ -19,7 +19,6 @@ const RouterConfig = () => {
           <Route path="/gists" exact component={DynamicLoad(() => import('../view/gists'))} />} />
           <Route path="/gists/:id" component={DynamicLoad(() => import('../view/gists/gist'))} />} />
           <Route path="/cases" component={DynamicLoad(() => import('../view/cases'))} />} />
-          {/* <Route path="/search" render={() => <DynamicLoad promise={import('./pages/search')} />} /> */}
         </Switch>
       </Layout>
     </Router>

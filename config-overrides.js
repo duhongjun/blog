@@ -27,7 +27,7 @@ module.exports = function override(config, env) {
     })
   )
 
-  if (process.env.REACT_APP_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     config.module.rules.push({
       test: /\.less$/,
       use: ['style-loader', 'css-loader', { loader: 'less-loader' }]
